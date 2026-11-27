@@ -354,7 +354,7 @@
     keyMove(k,true);if(k===' ')dodge();else if(k==='j')basicAttack(false);else if(k==='k')useSkill(0);else if(k==='l')useSkill(1);else if(k===';')useSkill(2);else if(k==='q')dodge();else if(k==='e')interact();else if(k==='i')showInventory();else if(k==='p')showCharacter();else if(k==='c')openCraft();
   });
   window.addEventListener('keyup',e=>keyMove(e.key.toLowerCase(),false));
-  window.addEventListener('blur',()=>{input={up:false,down:false,left:false,right:false,slow:false};touchMovePointers.clear();touchAttack=false;});
+  window.addEventListener('blur',()=>{input={up:false,down:false,left:false,right:false,slow:false};resetJoystick();attackPointer=null;touchAttack=false;});
   function canvasPoint(e){const r=canvas.getBoundingClientRect();return{x:clamp((e.clientX-r.left)*canvas.width/r.width,0,canvas.width),y:clamp((e.clientY-r.top)*canvas.height/r.height,0,canvas.height)};}
   canvas.addEventListener('pointermove',e=>{const q=canvasPoint(e);game.mouse.x=q.x;game.mouse.y=q.y;game.mouse.inside=true;canvas.style.cursor='crosshair';});
   canvas.addEventListener('pointerleave',()=>{game.mouse.inside=false;});
@@ -362,9 +362,12 @@
   canvas.addEventListener('pointerup',()=>{game.mouse.down=false;});
   document.addEventListener('click',e=>{const open=e.target.closest('[data-open]');if(open){const what=open.dataset.open;if(what==='inventory')showInventory();else if(what==='character')showCharacter();else if(what==='craft')openCraft();else if(what==='pause')showPause();return;}const slot=e.target.closest('[data-slot]');if(slot&&game.mode==='playing'){if(slot.dataset.slot==='basic')basicAttack(false);else if(slot.dataset.slot==='dodge')dodge();else useSkill(Number(slot.dataset.slot));}});
   document.addEventListener('click',e=>{if(e.target.id==='help-button')showHelp();});
-  const touchMovePointers=new Map();document.querySelectorAll('#touch-controls button').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();const move=b.dataset.move;if(move){touchMovePointers.set(e.pointerId,move);input[move]=true;try{b.setPointerCapture(e.pointerId);}catch(_){}return;}const action=b.dataset.action;if(action==='attack')touchAttack=true;else if(action==='dodge')dodge();else if(action==='skill1')useSkill(0);else if(action==='skill2')useSkill(1);else if(action==='skill3')useSkill(2);else if(action==='interact')interact();});});
+  let joystickPointer=null,attackPointer=null;const joystickBase=$('#joystick-base'),joystickKnob=$('#joystick-knob');function moveJoystick(e){const r=joystickBase.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,max=r.width*.34,dx=e.clientX-cx,dy=e.clientY-cy,len=Math.hypot(dx,dy),scale=len>max?max/len:1,x=dx*scale,y=dy*scale;joystickKnob.style.transform=`translate(${x}px,${y}px)`;const nx=x/max,ny=y/max;input.left=nx<-.2;input.right=nx>.2;input.up=ny<-.2;input.down=ny>.2;}
+  function resetJoystick(){joystickPointer=null;joystickKnob.style.transform='translate(0,0)';input.up=input.down=input.left=input.right=false;}
+  joystickBase.addEventListener('pointerdown',e=>{e.preventDefault();joystickPointer=e.pointerId;try{joystickBase.setPointerCapture(e.pointerId);}catch(_){}moveJoystick(e);});joystickBase.addEventListener('pointermove',e=>{if(e.pointerId===joystickPointer)moveJoystick(e);});
+  document.querySelectorAll('#touch-controls button').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();const action=b.dataset.action;if(action==='attack'){touchAttack=true;attackPointer=e.pointerId;}else if(action==='dodge')dodge();else if(action==='skill1')useSkill(0);else if(action==='skill2')useSkill(1);else if(action==='skill3')useSkill(2);else if(action==='interact')interact();});});
   document.addEventListener('pointerdown',()=>{if(audio.on){if(!audio.ctx){const AC=window.AudioContext||window.webkitAudioContext;if(AC)audio.ctx=new AC();}audio.ctx?.resume();playMusic();}},{once:true});
-  function releaseTouchPointer(e){touchMovePointers.delete(e.pointerId);for(const dir of ['up','down','left','right'])input[dir]=[...touchMovePointers.values()].includes(dir);if(e.target?.closest?.('[data-action="attack"]'))touchAttack=false;else if(touchMovePointers.size===0)touchAttack=false;}
+  function releaseTouchPointer(e){if(e.pointerId===joystickPointer)resetJoystick();if(e.pointerId===attackPointer){touchAttack=false;attackPointer=null;}}
   document.addEventListener('pointerup',releaseTouchPointer);document.addEventListener('pointercancel',releaseTouchPointer);
   window.addEventListener('beforeunload',()=>{if(game.player&&!game.player.morto)saveGame();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&game.player&&!game.player.morto)saveGame();});

@@ -113,7 +113,7 @@ html,body{width:100%;height:100%;min-height:100%;overflow:hidden;background:radi
   .touch-device .game-hud .status-card{padding:5px 6px}
   .touch-device .game-hud .bar-label{font-size:7px}
   .touch-device .game-menu-hud{top:5px;right:5px;gap:4px}
-  .touch-device .game-hotbar{top:49px!important;bottom:auto!important;left:50%;transform:translateX(-50%);gap:2px;padding:3px;background:#101a20c9;border-radius:6px}
+  .touch-device .game-hotbar{top:auto!important;bottom:132px!important;left:50%;transform:translateX(-50%);gap:2px;padding:3px;background:#101a20c9;border-radius:6px}
   .touch-device .game-hotbar .hotkey{width:clamp(38px,9.5vw,46px);height:43px;min-width:0;min-height:0}
   .touch-device .touch-controls{bottom:6px!important;left:6px!important;right:6px!important}
   .touch-device .dpad{grid-template-columns:repeat(3,46px);grid-template-rows:repeat(2,46px)}
@@ -125,4 +125,10 @@ html,body{width:100%;height:100%;min-height:100%;overflow:hidden;background:radi
 .touch-device .dpad{grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:3px}
 .touch-device .touch-actions{grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:4px}
 .touch-device .touch-controls button,.touch-device .touch-actions button{width:48px;height:48px;min-width:48px;min-height:48px}
+.touch-device .mobile-joystick{width:122px;height:122px;position:relative;display:grid;place-items:center;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.touch-device .joystick-base{width:112px;height:112px;position:relative;border-radius:50%;border:2px solid #e4d39a99;background:radial-gradient(circle at 35% 30%,#45565dcc,#111c24e8 72%);box-shadow:inset 0 0 0 5px #ffffff0c,0 4px 14px #0008;touch-action:none}
+.touch-device .joystick-base:before,.touch-device .joystick-base:after{content:'';position:absolute;background:#e4d39a35;pointer-events:none}
+.touch-device .joystick-base:before{width:1px;height:75%;left:50%;top:12.5%}.touch-device .joystick-base:after{height:1px;width:75%;top:50%;left:12.5%}
+.touch-device .joystick-knob{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;border:2px solid #f0d88f;background:radial-gradient(circle at 35% 30%,#e9ce82,#8e7544 72%);box-shadow:0 3px 8px #000a;will-change:transform;pointer-events:none}
+.touch-device .mobile-joystick small{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:7px;letter-spacing:1px;color:#e5d9b0;text-shadow:0 1px 3px #000;pointer-events:none}
 @media(any-pointer:coarse) and (min-width:601px){.touch-device .game-hotbar{bottom:112px}.touch-device .touch-controls{bottom:8px}.touch-device .dpad{grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,52px)}.touch-device .touch-actions{grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,52px)}.touch-device .touch-controls button,.touch-device .touch-actions button{width:52px;height:52px}}
