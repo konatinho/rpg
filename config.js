@@ -1,19 +1,19 @@
 /* Dados de balanceamento e conteúdo. O jogo inteiro pode ser executado sem rede. */
 window.GameConfig = (() => {
   const classes = {
-    guerreiro: { id:'guerreiro', nome:'Guerreiro', titulo:'Guardião da fronteira', cor:'#e49b52', vida:150, recurso:40, recursoNome:'Mana', dano:14, defesa:10, velocidade:90, critico:0.05, passiva:'Pele de Ferro', descricao:'Resiste a golpes e domina o combate corpo a corpo.', habilidades:[
+    guerreiro: { id:'guerreiro', nome:'Guerreiro', titulo:'Guardião da fronteira', cor:'#e49b52', vida:150, recurso:40, recursoNome:'Mana', dano:14, defesa:10, velocidade:98, critico:0.05, passiva:'Pele de Ferro', descricao:'Resiste a golpes e domina o combate corpo a corpo.', habilidades:[
       {id:'terremoto',nome:'Impacto Sísmico',tecla:'K',custo:10,recarga:7,efeito:'Golpeia o chão, causa 180% de dano e atordoa inimigos próximos.',icone:'✹'},
       {id:'muralha',nome:'Muralha',tecla:'L',custo:10,recarga:14,efeito:'Reduz o dano recebido em 50% por 4 s.',icone:'▣'},
       {id:'grito',nome:'Grito de Guerra',tecla:';',custo:12,recarga:20,efeito:'+25% de dano por 8 s e provoca inimigos.',icone:'♬'}]},
-    mago: { id:'mago', nome:'Mago', titulo:'Estudioso das estrelas', cor:'#72b9ef', vida:80, recurso:120, recursoNome:'Mana', dano:18, defesa:3, velocidade:85, critico:0.08, passiva:'Fluxo Arcano', descricao:'Lança magia à distância e controla grandes áreas.', habilidades:[
+    mago: { id:'mago', nome:'Mago', titulo:'Estudioso das estrelas', cor:'#72b9ef', vida:80, recurso:120, recursoNome:'Mana', dano:18, defesa:3, velocidade:92, critico:0.08, passiva:'Fluxo Arcano', descricao:'Lança magia à distância e controla grandes áreas.', habilidades:[
       {id:'explosao',nome:'Explosão de Fogo',tecla:'K',custo:18,recarga:5,efeito:'Explode no cursor e queima inimigos próximos.',icone:'✦'},
       {id:'nova',nome:'Nova de Gelo',tecla:'L',custo:22,recarga:12,efeito:'Congela e desacelera inimigos próximos.',icone:'❄'},
       {id:'chuva',nome:'Chuva Arcana',tecla:';',custo:35,recarga:25,efeito:'Invoca 8 meteoros na área marcada.',icone:'☄'}]},
-    assassino: { id:'assassino', nome:'Assassino', titulo:'Lâmina invisível', cor:'#b68ae8', vida:95, recurso:100, recursoNome:'Energia', dano:12, defesa:4, velocidade:120, critico:0.20, passiva:'Golpe Furtivo', descricao:'Move-se depressa e ataca com golpes críticos.', habilidades:[
+    assassino: { id:'assassino', nome:'Assassino', titulo:'Lâmina invisível', cor:'#b68ae8', vida:95, recurso:100, recursoNome:'Energia', dano:12, defesa:4, velocidade:130, critico:0.20, passiva:'Golpe Furtivo', descricao:'Move-se depressa e ataca com golpes críticos.', habilidades:[
       {id:'passo',nome:'Passo Sombrio',tecla:'K',custo:15,recarga:7,efeito:'Teleporta e garante crítico no próximo golpe.',icone:'◈'},
       {id:'veneno',nome:'Lâmina Venenosa',tecla:'L',custo:18,recarga:10,efeito:'Aplica veneno por 5 s.',icone:'☠'},
       {id:'danca',nome:'Dança das Lâminas',tecla:';',custo:28,recarga:22,efeito:'Fica invulnerável e atinge todos ao redor.',icone:'✧'}]},
-    arqueiro: { id:'arqueiro', nome:'Arqueiro', titulo:'Batedor da fronteira', cor:'#8fc47d', vida:100, recurso:90, recursoNome:'Energia', dano:13, defesa:5, velocidade:98, critico:0.14, passiva:'Mira Precisa · +1% de crítico por nível', descricao:'Mantém distância, alinha disparos e domina o terreno.', habilidades:[
+    arqueiro: { id:'arqueiro', nome:'Arqueiro', titulo:'Batedor da fronteira', cor:'#8fc47d', vida:100, recurso:90, recursoNome:'Energia', dano:13, defesa:5, velocidade:106, critico:0.14, passiva:'Mira Precisa · +1% de crítico por nível', descricao:'Mantém distância, alinha disparos e domina o terreno.', habilidades:[
       {id:'tiro_perfurante',nome:'Tiro Perfurante',tecla:'K',custo:14,recarga:6,efeito:'Flecha de longo alcance atravessa inimigos alinhados.',icone:'➶'},
       {id:'chuva_flechas',nome:'Chuva de Flechas',tecla:'L',custo:24,recarga:14,efeito:'Marca uma área e dispara uma saraivada de flechas.',icone:'⤓'},
       {id:'salto_arqueiro',nome:'Salto Evasivo',tecla:';',custo:18,recarga:12,efeito:'Salta para trás e evita golpes por 0,45 s.',icone:'↗'}]}
