@@ -2,5 +2,17 @@ Música do jogo
 
 “Lofi Hip Hop Loop”, por omfgdude. Faixa com licença CC0 (Creative Commons Zero / domínio público) publicada no OpenGameArt.org.
 Fonte: https://opengameart.org/content/lofi-hip-hop-loop
-Arquivo local: lofi-hip-hop-loop.ogg
+Arquivo local: musicas/lofi-hip-hop-loop.ogg
 A música foi incluída no projeto para funcionamento offline; créditos são opcionais pela licença, incluídos aqui por cortesia.
+
+"A cup of tea", "Rainy Forest" e "Cue", por TAD; sob licença CC0.
+Fonte: https://opengameart.org/content/lofi-compilation
+Arquivos locais: musicas/town-lofi.mp3, musicas/forest-lofi.mp3, musicas/ruins-lofi.mp3
+
+"Dark Cavern Ambient", por Paul Wortmann; CC0.
+Fonte: https://opengameart.org/content/dark-cavern-ambient
+Arquivo local: musicas/cave-ambient.ogg
+
+"Long Winter", por Indieteur; CC0.
+Fonte: https://opengameart.org/content/long-winter
+Arquivo local: musicas/winter-lofi.mp3
