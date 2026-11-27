@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111923">
+  <title>Crônicas do Carvalho — RPG 2D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div class="brand-mark">✦</div><div><strong>CRÔNICAS DO CARVALHO</strong><small>Uma aventura pixel art</small></div>
+      <div class="top-actions"><span id="area-label">TELA INICIAL</span><button id="audio-button" class="icon-button" title="Ativar música e sons">♫</button><button id="fullscreen-button" class="icon-button" title="Tela cheia">⛶</button><button id="help-button" class="icon-button" title="Controles">?</button></div>
+    </header>
+    <section class="game-layout">
+      <div class="game-frame">
+        <canvas id="game" width="480" height="270" aria-label="Mundo do jogo"></canvas>
+        <div class="hotbar game-hotbar"><button data-slot="basic" class="hotkey basic"><span class="keycap">J</span><b id="basic-icon">⚔</b><small>Ataque</small></button><button data-slot="0" class="hotkey"><span class="keycap">K</span><b id="skill-icon-0">✦</b><small id="skill-name-0">Habilidade</small><strong id="skill-state-0" class="skill-state">PRONTA</strong><i id="cooldown-0"></i></button><button data-slot="1" class="hotkey"><span class="keycap">L</span><b id="skill-icon-1">✦</b><small id="skill-name-1">Habilidade</small><strong id="skill-state-1" class="skill-state">PRONTA</strong><i id="cooldown-1"></i></button><button data-slot="2" class="hotkey"><span class="keycap">;</span><b id="skill-icon-2">✦</b><small id="skill-name-2">Habilidade</small><strong id="skill-state-2" class="skill-state">PRONTA</strong><i id="cooldown-2"></i></button><button data-slot="dodge" class="hotkey dodge"><span class="keycap">ESPAÇO</span><b>➜</b><small>Rolagem</small><strong id="dodge-state" class="skill-state">PRONTA</strong></button><div class="weapon-box"><span>ARMA</span><b id="weapon-name">Mãos livres</b><small id="weapon-stats">Dano base</small></div></div>
+        <div id="boss-hud" class="boss-hud hidden"><div class="boss-name">SENHOR DO ABISMO</div><div class="boss-track"><span></span></div></div>
+        <div id="toast-layer" aria-live="polite"></div>
+        <div id="hover-label" class="hover-label hidden"></div>
+        <div id="overlay" class="overlay">
+          <div class="panel title-panel">
+            <div class="title-emblem">✦</div><p class="eyebrow">AVENTURA 2D • PIXEL ART</p><h1>Crônicas do<br><span>Carvalho</span></h1>
+            <p class="intro">A floresta voltou a sussurrar. Pegue seu equipamento e descubra o que despertou sob as ruínas.</p>
+            <div id="title-buttons" class="button-stack"></div>
+            <p class="tiny-note">Seu progresso fica salvo neste navegador.</p>
+          </div>
+          <div id="modal-content" class="panel modal-panel hidden"></div>
+        </div>
+        <div id="touch-controls" class="touch-controls hidden" aria-label="Controles de toque">
+          <div class="dpad"><button data-move="up">▲</button><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div>
+          <div class="touch-actions"><button data-action="attack" aria-label="Atacar">⚔</button><button data-action="dodge" aria-label="Rolagem">↗</button><button data-action="skill1" aria-label="Habilidade K">K</button><button data-action="skill2" aria-label="Habilidade L">L</button><button data-action="skill3" aria-label="Habilidade ponto e vírgula">;</button><button data-action="interact" aria-label="Interagir">E</button></div>
+        </div>
+      </div>
+      <aside class="side-rail">
+        <section class="side-card minimap-card"><div class="card-heading"><span>MAPA</span><span id="map-area-name">—</span></div><canvas id="minimap" width="144" height="96"></canvas><div class="map-legend"><span><i class="legend-player"></i>Você</span><span><i class="legend-zone"></i>Zonas</span><span><i class="legend-exit"></i>Saídas</span></div></section>
+        <section class="side-card status-card"><div class="card-heading">AVENTUREIRO</div><div class="hero-mini"><div class="portrait" id="portrait">➶</div><div><strong id="hero-name">Sem classe</strong><small id="hero-level">Nível —</small></div></div><div class="stat-line"><span>Vida</span><b id="side-hp">—</b></div><div class="bar hp"><i id="side-hp-bar"></i></div><div class="stat-line"><span id="resource-label">Mana</span><b id="side-mp">—</b></div><div class="bar mp"><i id="side-mp-bar"></i></div><div class="stat-line"><span>Ouro</span><b id="side-gold">0</b></div><button id="upgrade-button" class="primary-button upgrade-button hidden" type="button">✦ Melhoria disponível</button></section>
+        <section class="side-card quick-card"><div class="card-heading">ATALHOS</div><button data-open="inventory"><kbd>I</kbd> Inventário <span>›</span></button><button data-open="character"><kbd>P</kbd> Personagem <span>›</span></button><button data-open="craft"><kbd>C</kbd> Criar itens <span>›</span></button><button data-open="pause"><kbd>ESC</kbd> Pausar <span>›</span></button></section>
+      </aside>
+    </section>
+    <section class="bottom-bar"><div class="bars"><div class="bar-label"><span>VIDA</span><b id="hud-hp">—</b></div><div class="bar hp"><i id="hud-hp-bar"></i></div><div class="bar-label"><span id="hud-resource-name">MANA</span><b id="hud-mp">—</b></div><div class="bar mp"><i id="hud-mp-bar"></i></div><div class="xp-wrap"><div class="bar-label"><span>EXPERIÊNCIA</span><b id="hud-xp">—</b></div><div class="bar xp"><i id="hud-xp-bar"></i></div></div></div>
+      <div id="hint-line" class="hint-line">WASD / setas movem · Espaço ou Q rola · J / clique atacam · E interage</div>
+    </section>
+    
+  </main>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
