@@ -11,12 +11,12 @@
   <main id="app">
     <header class="topbar">
       <div class="brand-mark">✦</div><div><strong>CRÔNICAS DO CARVALHO</strong><small>Uma aventura pixel art</small></div>
-      <div class="top-actions"><span id="area-label">TELA INICIAL</span><button id="audio-button" class="icon-button" title="Ativar música e sons">♫</button><button id="fullscreen-button" class="icon-button" title="Tela cheia">⛶</button><button id="help-button" class="icon-button" title="Controles">?</button></div>
+      <div class="top-actions"><span id="area-label">TELA INICIAL</span><button id="fullscreen-button" class="icon-button" title="Tela cheia">⛶</button><button id="help-button" class="icon-button" title="Controles">?</button></div>
     </header>
     <section class="game-layout">
       <div class="game-frame">
         <canvas id="game" width="480" height="270" aria-label="Mundo do jogo"></canvas>
-        <div class="hotbar game-hotbar"><button data-slot="basic" class="hotkey basic"><span class="keycap">J</span><b id="basic-icon">⚔</b><small>Ataque</small></button><button data-slot="0" class="hotkey"><span class="keycap">K</span><b id="skill-icon-0">✦</b><small id="skill-name-0">Habilidade</small><strong id="skill-state-0" class="skill-state">PRONTA</strong><i id="cooldown-0"></i></button><button data-slot="1" class="hotkey"><span class="keycap">L</span><b id="skill-icon-1">✦</b><small id="skill-name-1">Habilidade</small><strong id="skill-state-1" class="skill-state">PRONTA</strong><i id="cooldown-1"></i></button><button data-slot="2" class="hotkey"><span class="keycap">;</span><b id="skill-icon-2">✦</b><small id="skill-name-2">Habilidade</small><strong id="skill-state-2" class="skill-state">PRONTA</strong><i id="cooldown-2"></i></button><button data-slot="dodge" class="hotkey dodge"><span class="keycap">ESPAÇO</span><b>➜</b><small>Rolagem</small><strong id="dodge-state" class="skill-state">PRONTA</strong></button><div class="weapon-box"><span>ARMA</span><b id="weapon-name">Mãos livres</b><small id="weapon-stats">Dano base</small></div></div>
+        <div class="hotbar game-hotbar"><button data-slot="0" class="hotkey"><span class="keycap">Q</span><b id="skill-icon-0">✦</b><small id="skill-name-0">Habilidade</small><strong id="skill-state-0" class="skill-state">PRONTA</strong><i id="cooldown-0"></i></button><button data-slot="1" class="hotkey"><span class="keycap">E</span><b id="skill-icon-1">✦</b><small id="skill-name-1">Habilidade</small><strong id="skill-state-1" class="skill-state">PRONTA</strong><i id="cooldown-1"></i></button><button data-slot="2" class="hotkey"><span class="keycap">R</span><b id="skill-icon-2">✦</b><small id="skill-name-2">Habilidade</small><strong id="skill-state-2" class="skill-state">PRONTA</strong><i id="cooldown-2"></i></button><button data-slot="dodge" class="hotkey dodge"><span class="keycap">ESPAÇO</span><b>➜</b><small>Rolagem</small><strong id="dodge-state" class="skill-state">PRONTA</strong></button><div class="weapon-box"><span>ARMA</span><b id="weapon-name">Mãos livres</b><small id="weapon-stats">Dano base</small></div></div>
         <div id="boss-hud" class="boss-hud hidden"><div class="boss-name">SENHOR DO ABISMO</div><div class="boss-track"><span></span></div></div>
         <div id="toast-layer" aria-live="polite"></div>
         <div id="hover-label" class="hover-label hidden"></div>
@@ -31,7 +31,7 @@
         </div>
         <div id="touch-controls" class="touch-controls hidden" aria-label="Controles de toque">
           <div id="mobile-joystick" class="mobile-joystick" aria-label="Joystick de movimento"><div id="joystick-base" class="joystick-base"><div id="joystick-knob" class="joystick-knob"></div></div><small>MOVER</small></div>
-          <div class="touch-actions"><button data-action="attack" aria-label="Atacar">⚔</button><button data-action="dodge" aria-label="Rolagem">↗</button><button data-action="skill1" aria-label="Habilidade K">K</button><button data-action="skill2" aria-label="Habilidade L">L</button><button data-action="skill3" aria-label="Habilidade ponto e vírgula">;</button><button data-action="interact" aria-label="Interagir">E</button></div>
+          <div class="touch-actions"><button data-action="attack" aria-label="Atacar">⚔</button><button data-action="dodge" aria-label="Rolagem">↗</button><button data-action="skill1" aria-label="Habilidade Q">Q</button><button data-action="skill2" aria-label="Habilidade E">E</button><button data-action="skill3" aria-label="Habilidade R">R</button><button data-action="interact" aria-label="Interagir">F</button></div>
         </div>
       </div>
       <aside class="side-rail">
@@ -41,7 +41,7 @@
       </aside>
     </section>
     <section class="bottom-bar"><div class="bars"><div class="bar-label"><span>VIDA</span><b id="hud-hp">—</b></div><div class="bar hp"><i id="hud-hp-bar"></i></div><div class="bar-label"><span id="hud-resource-name">MANA</span><b id="hud-mp">—</b></div><div class="bar mp"><i id="hud-mp-bar"></i></div><div class="xp-wrap"><div class="bar-label"><span>EXPERIÊNCIA</span><b id="hud-xp">—</b></div><div class="bar xp"><i id="hud-xp-bar"></i></div></div></div>
-      <div id="hint-line" class="hint-line">WASD / setas movem · Espaço ou Q rola · J / clique atacam · E interage</div>
+      <div id="hint-line" class="hint-line">WASD / setas movem · Q, E e R usam habilidades · Espaço rola · Clique ataca · F interage</div>
     </section>
     
   </main>
