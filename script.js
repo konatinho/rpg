@@ -358,6 +358,7 @@
   function canvasPoint(e){const r=canvas.getBoundingClientRect();return{x:clamp((e.clientX-r.left)*canvas.width/r.width,0,canvas.width),y:clamp((e.clientY-r.top)*canvas.height/r.height,0,canvas.height)};}
   canvas.addEventListener('pointermove',e=>{const q=canvasPoint(e);game.mouse.x=q.x;game.mouse.y=q.y;game.mouse.inside=true;canvas.style.cursor='crosshair';});
   canvas.addEventListener('pointerleave',()=>{game.mouse.inside=false;});
+  canvas.addEventListener('contextmenu',e=>{if(!document.body.classList.contains('touch-device'))e.preventDefault();});
   canvas.addEventListener('pointerdown',e=>{if(e.button!==0||game.mode!=='playing')return;e.preventDefault();const q=canvasPoint(e);game.mouse.x=q.x;game.mouse.y=q.y;game.mouse.down=true;if(game.aimSkill!==null)useSkill(game.aimSkill,true);else basicAttack(true);});
   canvas.addEventListener('pointerup',()=>{game.mouse.down=false;});
   document.addEventListener('click',e=>{const open=e.target.closest('[data-open]');if(open){const what=open.dataset.open;if(what==='inventory')showInventory();else if(what==='character')showCharacter();else if(what==='craft')openCraft();else if(what==='pause')showPause();return;}const slot=e.target.closest('[data-slot]');if(slot&&game.mode==='playing'){if(slot.dataset.slot==='basic')basicAttack(false);else if(slot.dataset.slot==='dodge')dodge();else useSkill(Number(slot.dataset.slot));}});
