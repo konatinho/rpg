@@ -166,3 +166,6 @@ button{transition:background-color .16s,border-color .16s,transform .16s,filter 
 
 /* Barra de habilidades centralizada no topo da cena. */
 .game-hotbar{left:50%;right:auto;top:12px;bottom:auto;transform:translateX(-50%)}@media(max-width:600px){.game-hotbar{top:5px;bottom:auto}}
+
+button:focus-visible,[role="button"]:focus-visible{outline:2px solid #fff0a8;outline-offset:2px;box-shadow:0 0 0 4px #101820cc}
+@media(prefers-reduced-motion:reduce){button,.bar i,.hotkey,.class-card{scroll-behavior:auto;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
